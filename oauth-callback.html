@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QuickBooks Authorization Complete</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, Arial, sans-serif; max-width: 640px; margin: 60px auto; padding: 0 20px; line-height: 1.6; color: #222; }
+  input { width: 100%; font-family: monospace; font-size: 0.9rem; padding: 10px; box-sizing: border-box; }
+  button { margin-top: 12px; padding: 8px 16px; font-size: 0.95rem; cursor: pointer; }
+</style>
+</head>
+<body>
+<h1>Authorization complete</h1>
+<p>Copy the URL below and paste it back into the terminal that's waiting for it.</p>
+<input id="url" type="text" readonly>
+<button onclick="copyUrl()">Copy</button>
+<p id="status"></p>
+<script>
+  const urlBox = document.getElementById("url");
+  urlBox.value = window.location.href;
+  urlBox.addEventListener("click", () => urlBox.select());
+  urlBox.select();
+
+  function copyUrl() {
+    navigator.clipboard.writeText(urlBox.value).then(() => {
+      document.getElementById("status").textContent = "Copied to clipboard.";
+    });
+  }
+</script>
+</body>
+</html>
